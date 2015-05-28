@@ -1,12 +1,19 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<malloc.h>
 #define MAX 100
 
 
 typedef struct {
 	int key;
 	}element;
-element stack[MAX];
+element *stack;
+void init(){     //in gobal malloc should be constant we must put it in the main func
+
+	stack=malloc(sizeof(element));
+}
+
+int capacity=1;
 
 int top=-1;
 void stackFull(){
@@ -43,7 +50,8 @@ void display(){
 int main()
 {	
 	int i;
-	for(i=0;i<10;i++){
+	init();
+	for(i=0;i<100;i++){
 		push(i);
 //		printf("%d ",stack[top].key);
 	}
