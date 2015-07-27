@@ -15,13 +15,44 @@ void insert(treePointer **tree,treePointer *item){
 	else if(item->data>(*tree)->data)
 		insert(&(*tree)->rchild,item);
 }
-void print(treePointer *tree){
+
+
+
+void preorder(treePointer *tree){ 
+	if(!tree)
+		return;
+	printf("%d ,",tree->data);
+		
 	if(tree->lchild)
-		print(tree->lchild);
+		preorder(tree->lchild);
+        if(tree->rchild)
+		preorder(tree->rchild);
+
+}
+
+void inorder(treePointer *tree){ //inorder travel
+	if(!tree)
+		return;
+		
+	if(tree->lchild)
+		inorder(tree->lchild);
 	printf("%d  ,",tree->data);
         if(tree->rchild)
-		print(tree->rchild);
+		inorder(tree->rchild);
 }
+
+
+void postorder(treePointer *tree){
+	if(!tree)
+		return;
+	if(tree->lchild)
+		postorder(tree->lchild);
+	if(tree->rchild)
+		postorder(tree->rchild);
+	printf(" %d ,",tree->data);
+}
+
+		
 int main(){
 	treePointer *curr,*root;
 	int i;
@@ -32,6 +63,6 @@ int main(){
 		curr->data=rand()%10+1;
 		insert(&root,curr);
         }
-	print(root);
+	inorder(root);
 }
 
