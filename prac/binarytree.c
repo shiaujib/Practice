@@ -21,7 +21,7 @@ void insert(treePointer **tree,treePointer *item){
 void preorder(treePointer *tree){ 
 	if(!tree)
 		return;
-	printf("%d ,",tree->data);
+	printf(" %d \t",tree->data);
 		
 	if(tree->lchild)
 		preorder(tree->lchild);
@@ -36,7 +36,7 @@ void inorder(treePointer *tree){ //inorder travel
 		
 	if(tree->lchild)
 		inorder(tree->lchild);
-	printf("%d  ,",tree->data);
+	printf(" %d \t",tree->data);
         if(tree->rchild)
 		inorder(tree->rchild);
 }
@@ -49,7 +49,7 @@ void postorder(treePointer *tree){
 		postorder(tree->lchild);
 	if(tree->rchild)
 		postorder(tree->rchild);
-	printf(" %d ,",tree->data);
+	printf(" %d \t",tree->data);
 }
 
 		
@@ -57,12 +57,21 @@ int main(){
 	treePointer *curr,*root;
 	int i;
 	root=NULL;
-	for(i=0;i<10;i++){
+	for(i=0;i<8;i++){
 		curr=(treePointer *)malloc(sizeof(treePointer));
 		curr->lchild=curr->rchild=NULL;
-		curr->data=rand()%10+1;
+		curr->data=rand()%15+1;
 		insert(&root,curr);
         }
+	printf("preorderTravel \n");
+	preorder(root);
+	printf("\n");
+	printf("inorderTravel \n");
 	inorder(root);
+	printf("\n");
+	printf("postorderTravel \n");
+	postorder(root);
+	printf("\n");
+	
 }
 
